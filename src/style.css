@@ -1,0 +1,50 @@
+body {
+  margin: 0%;
+}
+
+.title {
+  background-color: cadetblue;
+  text-align: center;
+  align-content: center;
+  color: white;
+  margin: 0%;
+  padding: 4rem;
+  font-size: 1.5rem;
+}
+
+.card {
+  color: white;
+  margin-top: 0%;
+  padding: 0.5rem;
+  padding-left: 2rem;
+  font-size: 1.2rem;
+}
+
+.card li {
+  padding-top: 0.5rem;
+}
+
+.card li li {
+  font-size: 1.1rem;
+}
+
+.card img {
+  height: 1.5rem;
+  width: auto;
+}
+
+.green-background {
+  background-color: rgb(17, 172, 17);
+}
+
+.blue-background {
+  background-color: cadetblue;
+}
+
+.red-background {
+  background-color: #e67e5c;
+}
+
+.purple-background {
+  background-color: #7845aa;
+}
