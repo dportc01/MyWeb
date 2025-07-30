@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 import java_icon from "./assets/img/java_icon.png";
 import python_icon from "./assets/img/python_icon.png";
@@ -22,21 +22,53 @@ type CardSections = {
   text: string[][];
 };
 
+type ThemeSelectorProps = {
+  color: string;
+  handler: React.ChangeEventHandler<HTMLSelectElement>;
+};
+
 function App() {
-  // Competencias
+  // HANDLER FOR THEME CHANGER
+  const [theme, setTheme] = useState<string>("1");
+
+  function themeHandler(event: React.ChangeEvent<HTMLSelectElement>) {
+    setTheme(event.target.value);
+  }
+
+  let colors: string[];
+
+  if (theme === "1") {
+    colors = [
+      "blue-background",
+      "green-background",
+      "red-background",
+      "purple-background",
+    ];
+  } else {
+    colors = [
+      "black-background",
+      "grey-background",
+      "black-background",
+      "grey-background",
+    ];
+  }
+
+  // Competencias ----------------------------------------------------------------
   const competencias = ["Java", "Python", "HTML", "JavaScript"];
   const competencias_icon = [java_icon, python_icon, html_icon, js_icon];
 
   const cardCompetencias: CardProps = {
     title: "Competencias",
-    color: "green-background",
+    color: colors[1],
     list: competencias,
   };
 
-  // Formación Académica
+  // Formación Académica ----------------------------------------------------------------
   const estudios = ["Universidad de León - Ingería Informática (3er año)"];
-  // Experiencia profesional
+
+  // Experiencia profesional ----------------------------------------------------------------
   const experiencia = ["Desarrollo en Andorid Studio"];
+
   const seciones = [
     "Duración",
     "Sector de la empresa",
@@ -44,6 +76,7 @@ function App() {
     "Tipo de contrato",
     "Descripción del puesto",
   ];
+
   const prac_1 = [
     "01/07/2024 - 31/07/2024",
     "Agricultura y Ganadería",
@@ -51,27 +84,29 @@ function App() {
     "Formación Práctica, Prácticas estudiante extracurriculares",
     "Desarollo de widgets que informan del estado de embalses para una aplicación de movil Android",
   ];
+
   const text = [prac_1];
 
   const cardExperiencia: CardProps = {
     title: "Experiencia Profesional",
-    color: "purple-background",
+    color: colors[3],
     list: experiencia,
   };
 
   return (
     <>
-      <TitleCard name="dportc01" />
+      <ThemeSelector color={colors[0]} handler={themeHandler} />
+      <TitleCard name="dportc01" color={colors[0]} />
       <CardIcons card={cardCompetencias} icons={competencias_icon} />
-      <Card title="Formación Académica" color="red-background" list={estudios} />
+      <Card title="Formación Académica" color={colors[2]} list={estudios} />
       <CardExperience card={cardExperiencia} sections={seciones} text={text} />
     </>
   );
 }
 
-function TitleCard({ name }: { name: string }) {
+function TitleCard({ name, color }: { name: string; color: string }) {
   return (
-    <div className="title blue-background">
+    <div className={"title " + color}>
       <h1>{name}</h1>
       Estudiante de ingeniería informática
     </div>
@@ -146,6 +181,18 @@ function CardExperience({ card, sections, text }: CardSections) {
     <div className={"card " + card.color}>
       <h2>{card.title}</h2>
       <ul>{generateSublist(card.list, sections, text)}</ul>
+    </div>
+  );
+}
+
+function ThemeSelector({ color, handler }: ThemeSelectorProps) {
+  return (
+    <div className={color}>
+      Tema
+      <select name="Tema" onChange={handler}>
+        <option value="1">Por defecto</option>
+        <option value="2">Oscuro</option>
+      </select>
     </div>
   );
 }

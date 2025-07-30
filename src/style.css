@@ -1,19 +1,32 @@
 body {
   margin: 0%;
+  color: white;
+  font-family: "Courier New", Courier, monospace;
+}
+
+select {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  color: inherit;
+  margin-inline-start: 1rem;
+}
+
+select,
+option {
+  font-family: inherit;
 }
 
 .title {
   background-color: cadetblue;
   text-align: center;
   align-content: center;
-  color: white;
   margin: 0%;
   padding: 4rem;
   font-size: 1.5rem;
 }
 
 .card {
-  color: white;
   margin-top: 0%;
   padding: 0.5rem;
   padding-left: 2rem;
@@ -33,6 +46,10 @@ body {
   width: auto;
 }
 
+/*
+  COLORS FOR CARD BACKOGRUND
+*/
+
 .green-background {
   background-color: rgb(17, 172, 17);
 }
@@ -47,4 +64,12 @@ body {
 
 .purple-background {
   background-color: #7845aa;
+}
+
+.black-background {
+  background-color: rgb(46, 46, 46);
+}
+
+.grey-background {
+  background-color: rgb(94, 94, 94);
 }
